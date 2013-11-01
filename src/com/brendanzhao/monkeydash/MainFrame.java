@@ -12,7 +12,7 @@ public class MainFrame extends JFrame {
 	MonkeyDashView view;
 	
 	public MainFrame() {
-		super("Monkey Dash");
+		super(Constants.GAME_NAME);
 		controller = new MonkeyDashController();
 		model = new MonkeyDashModel(controller);
 		view = new MonkeyDashView(controller);

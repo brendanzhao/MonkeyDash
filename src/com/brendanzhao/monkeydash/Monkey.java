@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 
 public class Monkey {
 	
-	private static final int GRAVITY = 10;
 	private int verticalVelocity;
 	private BufferedImage bufferedImage;
 	private Point location;
