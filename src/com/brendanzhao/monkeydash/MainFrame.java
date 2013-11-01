@@ -1,7 +1,6 @@
 package com.brendanzhao.monkeydash;
 
 import java.awt.BorderLayout;
-
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -13,9 +12,9 @@ public class MainFrame extends JFrame {
 	
 	public MainFrame() {
 		super(Constants.GAME_NAME);
-		controller = new MonkeyDashController();
-		model = new MonkeyDashModel(controller);
-		view = new MonkeyDashView(controller);
+		this.model = new MonkeyDashModel();
+		this.view = new MonkeyDashView(model);
+		this.controller = new MonkeyDashController(model, view);
 		
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.add(view, BorderLayout.CENTER);

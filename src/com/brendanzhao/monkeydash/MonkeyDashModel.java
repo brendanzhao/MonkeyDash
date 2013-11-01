@@ -1,18 +1,19 @@
 package com.brendanzhao.monkeydash;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonkeyDashModel extends AbstractModel {
+public class MonkeyDashModel {
 
 	private Monkey monkey;
 	private List<Block> blocks;
+	private BufferedImage backgroundImage;
 	
-	public MonkeyDashModel(AbstractController controller)
+	public MonkeyDashModel()
 	{
 		super();
-		setBlocks(new ArrayList<Block>());
-		controller.addModel(this);
+		this.setBlocks(new ArrayList<Block>());	
 	}
 
 	public Monkey getMonkey() {
@@ -29,5 +30,13 @@ public class MonkeyDashModel extends AbstractModel {
 
 	public void setBlocks(List<Block> blocks) {
 		this.blocks = blocks;
+	}
+
+	public BufferedImage getBackgroundImage() {
+		return backgroundImage;
+	}
+
+	public void setBackgroundImage(BufferedImage backgroundImage) {
+		this.backgroundImage = backgroundImage;
 	}
 }
