@@ -12,27 +12,27 @@ public class Monkey {
 	public Monkey() {		
 	}
 
-	private int getVerticalVelocity() {
+	public int getVerticalVelocity() {
 		return verticalVelocity;
 	}
 
-	private void setVerticalVelocity(int verticalVelocity) {
+	public void setVerticalVelocity(int verticalVelocity) {
 		this.verticalVelocity = verticalVelocity;
 	}
 
-	private BufferedImage getBufferedImage() {
+	public BufferedImage getBufferedImage() {
 		return bufferedImage;
 	}
 
-	private void setBufferedImage(BufferedImage bufferedImage) {
+	public void setBufferedImage(BufferedImage bufferedImage) {
 		this.bufferedImage = bufferedImage;
 	}
 
-	private Point getLocation() {
+	public Point getLocation() {
 		return location;
 	}
 
-	private void setLocation(Point location) {
+	public void setLocation(Point location) {
 		this.location = location;
 	}
 }

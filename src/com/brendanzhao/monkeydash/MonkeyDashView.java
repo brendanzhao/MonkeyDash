@@ -18,7 +18,6 @@ public class MonkeyDashView extends AbstractView {
 		this.initializeComponents();
 		this.controller = controller;
 		this.controller.addView(this);
-		this.repaint();
 	}
 	
 	public void initializeComponents() {		
