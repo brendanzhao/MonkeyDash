@@ -17,5 +17,9 @@ public class MonkeyDashView extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(this.model.getBackgroundImage(), 0, 0, null);
+
+		for(Block b : this.model.getBlocks()) {
+			g.drawImage(b.getImage(), b.getLocation().x, b.getLocation().y, null);
+		}
 	}
 }

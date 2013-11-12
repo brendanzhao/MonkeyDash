@@ -1,8 +1,12 @@
 package com.brendanzhao.monkeydash;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 public class MonkeyDashModel {
 
@@ -10,10 +14,21 @@ public class MonkeyDashModel {
 	private List<Block> blocks;
 	private BufferedImage backgroundImage;
 	
-	public MonkeyDashModel()
-	{
-		super();
-		this.setBlocks(new ArrayList<Block>());	
+	public MonkeyDashModel() {
+		
+		this.setBlocks(new ArrayList<Block>());
+		this.monkey = new Monkey();
+		
+		try {
+			this.setBackgroundImage(ImageIO.read(new File(Constants.BACKGROUND_IMAGE_URL)));
+			this.monkey.setRunningImageOne(ImageIO.read(new File(Constants.MONKEY_RUN_ONE_IMAGE_URL)));
+			this.monkey.setRunningImageTwo(ImageIO.read(new File(Constants.MONKEY_RUN_TWO_IMAGE_URL)));
+			this.monkey.setJumpingImage(ImageIO.read(new File(Constants.MONKEY_JUMP_IMAGE_URL)));
+			Block.setImage(ImageIO.read(new File(Constants.BACKGROUND_IMAGE_URL)));
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
 	}
 
 	public Monkey getMonkey() {
