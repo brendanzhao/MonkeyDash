@@ -1,19 +1,20 @@
 package com.brendanzhao.monkeydash;
 
-import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 public class Block {
 
 	private int width;
 	private int height;
-	private Point location;
+	private int x;
+	private int y;
 	private static BufferedImage image;
 	
-	public Block(int width, int height, Point location) {
+	public Block(int width, int height, int x, int y) {
 		this.setWidth(width);
 		this.setHeight(height);
-		this.setLocation(location);
+		this.setX(x);
+		this.setY(y);
 	}
 
 	public int getWidth() {
@@ -32,12 +33,20 @@ public class Block {
 		this.height = height;
 	}
 
-	public Point getLocation() {
-		return location;
+	public int getX() {
+		return x;
 	}
 
-	public void setLocation(Point location) {
-		this.location = location;
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	public static BufferedImage getImage() {

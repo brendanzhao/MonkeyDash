@@ -11,6 +11,7 @@ public class MonkeyDashView extends JPanel {
 	public MonkeyDashView(MonkeyDashModel model) {
 		this.model = model;
 		this.setPreferredSize(new Dimension(Constants.CLIENT_WIDTH, Constants.CLIENT_HEIGHT));
+		this.setDoubleBuffered(true);
 	}
 	
 	@Override
@@ -19,7 +20,7 @@ public class MonkeyDashView extends JPanel {
 		g.drawImage(this.model.getBackgroundImage(), 0, 0, null);
 
 		for(Block b : this.model.getBlocks()) {
-			g.drawImage(b.getImage(), b.getLocation().x, b.getLocation().y, null);
+			g.drawImage(Block.getImage(), b.getX(), b.getY(), null);
 		}
 	}
 }
