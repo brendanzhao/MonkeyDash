@@ -15,12 +15,12 @@ public class MonkeyDashModel {
 	private BufferedImage backgroundImage;
 	
 	public MonkeyDashModel() {
-		this.initializeImages();
-		this.monkey = new Monkey();
-		this.setBlocks(new ArrayList<Block>());
+		initializeImages();
+		monkey = new Monkey();
+		setBlocks(new ArrayList<Block>());
 			
 		for (int i = 0; i < Constants.INITIAL_NUMBER_BLOCKS; i++) {
-			this.blocks.add(new Block(i * Block.getImage().getWidth() + i * Constants.SPACE_BETWEEN_BLOCKS, Constants.BLOCK_LEVITATION_HEIGHT));
+			blocks.add(new Block(i * Block.getImage().getWidth() + i * Constants.SPACE_BETWEEN_BLOCKS, Constants.BLOCK_LEVITATION_HEIGHT));
 		}
 	}
 
@@ -50,7 +50,7 @@ public class MonkeyDashModel {
 	
 	public void initializeImages() {
 		try {
-			this.setBackgroundImage(ImageIO.read(new File(Constants.BACKGROUND_IMAGE_URL)));
+			setBackgroundImage(ImageIO.read(new File(Constants.BACKGROUND_IMAGE_URL)));
 			Monkey.setRunningImageOne(ImageIO.read(new File(Constants.MONKEY_RUN_ONE_IMAGE_URL)));
 			Monkey.setRunningImageTwo(ImageIO.read(new File(Constants.MONKEY_RUN_TWO_IMAGE_URL)));
 			Monkey.setJumpingImage(ImageIO.read(new File(Constants.MONKEY_JUMP_IMAGE_URL)));

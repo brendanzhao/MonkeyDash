@@ -12,16 +12,16 @@ public class MainFrame extends JFrame {
 	
 	public MainFrame() {
 		super(Constants.GAME_NAME);
-		this.model = new MonkeyDashModel();
-		this.view = new MonkeyDashView(model);
-		this.controller = new MonkeyDashController(model, view);
+		model = new MonkeyDashModel();
+		view = new MonkeyDashView(model);
+		controller = new MonkeyDashController(model, view);
 		
-		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		this.add(view, BorderLayout.CENTER);
-		this.pack();
-		this.setLocationRelativeTo(null);
-		this.setResizable(false);
-	    this.setVisible(true);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		add(view, BorderLayout.CENTER);
+		pack();
+		setLocationRelativeTo(null);
+		setResizable(false);
+	    setVisible(true);
 	}
 	
 	public static void main(String[] args) {

@@ -9,8 +9,8 @@ public class Block {
 	private static BufferedImage image;
 	
 	public Block(int x, int y) {
-		this.setX(x);
-		this.setY(y);
+		this.x = x;
+		this.y = y;
 	}
 
 	public int getX() {
@@ -23,10 +23,6 @@ public class Block {
 
 	public int getY() {
 		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
 	}
 
 	public static BufferedImage getImage() {

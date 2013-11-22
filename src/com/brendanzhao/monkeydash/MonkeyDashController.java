@@ -14,9 +14,9 @@ public class MonkeyDashController implements ActionListener {
 		this.model = model;
 		this.view = view;
 		
-		this.timer = new Timer(Constants.TIMER_TICK_MILLISECONDS, this);
-		this.timer.setInitialDelay(Constants.INITIAL_TIMER_DELAY);
-		this.timer.start();
+		timer = new Timer(Constants.TIMER_TICK_MILLISECONDS, this);
+		timer.setInitialDelay(Constants.INITIAL_TIMER_DELAY);
+		timer.start();
 	}
 
 	@Override
