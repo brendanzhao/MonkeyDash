@@ -9,8 +9,6 @@ public final class Constants {
 	public static final int CLIENT_HEIGHT = 600;
 	public static final int GRAVITY = 10;
 	public static final int PIXEL_SPEED_PER_TICK = 8;
-	public static final int BLOCK_WIDTH = 400;
-	public static final int BLOCK_HEIGHT = 75;
 	public static final int BLOCK_LEVITATION_HEIGHT = 400;
 	public static final int SPACE_BETWEEN_BLOCKS = 300;
 	public static final int INITIAL_NUMBER_BLOCKS = 3;

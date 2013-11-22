@@ -28,8 +28,8 @@ public class MonkeyDashController implements ActionListener {
 	
 	public void moveBlocks() {
 		for (Block b : this.model.getBlocks()) {
-			if (b.getX() <= b.getWidth() * -1) {
-				b.setX(Constants.SPACE_BETWEEN_BLOCKS * 3 + b.getWidth() * 2);
+			if (b.getX() <= Block.getImage().getWidth() * -1) {
+				b.setX(Constants.SPACE_BETWEEN_BLOCKS * 3 + Block.getImage().getWidth() * 2);
 			}
 			
 			b.setX(b.getX() - Constants.PIXEL_SPEED_PER_TICK);
