@@ -17,7 +17,7 @@ public class MonkeyDashModel {
 	public MonkeyDashModel() {
 		initializeImages();
 		monkey = new Monkey(Constants.MONKEY_HORIZONTAL_POSITION, 0);
-		setBlocks(new ArrayList<Block>());
+		blocks = new ArrayList<Block>();
 			
 		for (int i = 0; i < Constants.INITIAL_NUMBER_BLOCKS; i++) {
 			blocks.add(new Block(i * Block.getImage().getWidth() + i * Constants.SPACE_BETWEEN_BLOCKS + Constants.INITIAL_BLOCK_X, Constants.BLOCK_LEVITATION_HEIGHT));
@@ -28,29 +28,17 @@ public class MonkeyDashModel {
 		return monkey;
 	}
 
-	public void setMonkey(Monkey monkey) {
-		this.monkey = monkey;
-	}
-
 	public List<Block> getBlocks() {
 		return blocks;
-	}
-
-	public void setBlocks(List<Block> blocks) {
-		this.blocks = blocks;
 	}
 
 	public BufferedImage getBackgroundImage() {
 		return backgroundImage;
 	}
-
-	public void setBackgroundImage(BufferedImage backgroundImage) {
-		this.backgroundImage = backgroundImage;
-	}
 	
 	public void initializeImages() {
 		try {
-			setBackgroundImage(ImageIO.read(new File(Constants.BACKGROUND_IMAGE_URL)));
+			backgroundImage = ImageIO.read(new File(Constants.BACKGROUND_IMAGE_URL));
 			Monkey.setRunningImageOne(ImageIO.read(new File(Constants.MONKEY_RUN_ONE_IMAGE_URL)));
 			Monkey.setRunningImageTwo(ImageIO.read(new File(Constants.MONKEY_RUN_TWO_IMAGE_URL)));
 			Monkey.setJumpingImage(ImageIO.read(new File(Constants.MONKEY_JUMP_IMAGE_URL)));

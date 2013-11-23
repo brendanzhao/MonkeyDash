@@ -11,7 +11,7 @@ public final class Constants {
 	public static final int JUMP_STRENGTH = -25;
 	public static final int PIXEL_SPEED_PER_TICK = 15;
 	public static final int BLOCK_LEVITATION_HEIGHT = 400;
-	public static final int MONKEY_BLOCK_COLLISION_OFFSET = 30;
+	public static final int MONKEY_BLOCK_COLLISION_OFFSET = 40;
 	public static final int MONKEY_HORIZONTAL_POSITION = 300;
 	public static final int SPACE_BETWEEN_BLOCKS = 250;
 	public static final int INITIAL_NUMBER_BLOCKS = 3;
