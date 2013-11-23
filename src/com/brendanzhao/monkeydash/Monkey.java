@@ -4,11 +4,10 @@ import java.awt.image.BufferedImage;
 
 public class Monkey {
 	
-	private boolean onBlock;
-	private int verticalVelocity;
 	private int x;
 	private int y;
-	private BufferedImage currentImageFrame;
+	private int verticalVelocity;
+	private MonkeyState state;
 	private static BufferedImage runningImageOne;
 	private static BufferedImage runningImageTwo;
 	private static BufferedImage jumpingImage;
@@ -16,23 +15,7 @@ public class Monkey {
 	public Monkey(int x, int y) {
 		this.x = x;
 		this.y = y;
-		currentImageFrame = runningImageOne;
-	}
-
-	public boolean isOnBlock() {
-		return onBlock;
-	}
-
-	public void setIsOnBlock(boolean isOnBlock) {
-		this.onBlock = isOnBlock;
-	}
-
-	public int getVerticalVelocity() {
-		return verticalVelocity;
-	}
-
-	public void setVerticalVelocity(int verticalVelocity) {
-		this.verticalVelocity = verticalVelocity;
+		state = MonkeyState.FirstRun;
 	}
 
 	public int getX() {
@@ -51,6 +34,22 @@ public class Monkey {
 		this.y = y;
 	}
 
+	public int getVerticalVelocity() {
+		return verticalVelocity;
+	}
+
+	public void setVerticalVelocity(int verticalVelocity) {
+		this.verticalVelocity = verticalVelocity;
+	}
+
+	public MonkeyState getState() {
+		return state;
+	}
+
+	public void setState(MonkeyState state) {
+		this.state = state;
+	}
+
 	public static void setRunningImageOne(BufferedImage runningImageOne) {
 		Monkey.runningImageOne = runningImageOne;
 	}
@@ -64,10 +63,16 @@ public class Monkey {
 	}
 
 	public BufferedImage getCurrentImageFrame() {
-		return currentImageFrame;
-	}
-
-	public void setCurrentImageFrame(BufferedImage currentImageFrame) {
-		this.currentImageFrame = currentImageFrame;
+		switch (state) {
+			case FirstRun:
+				return runningImageOne;
+			case SecondRun:
+				return runningImageTwo;
+			case FirstJump:
+			case SecondJump:
+				return jumpingImage;
+			default:
+				return runningImageOne;
+		}
 	}
 }

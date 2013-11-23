@@ -34,57 +34,76 @@ public class MonkeyDashController implements ActionListener, KeyListener {
 		}
 	}
 	
-	public boolean isMonkeyOnBlock(Monkey monkey, List<Block> blocks) {
-		if (monkey.getY() != Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight())
+	public boolean monkeyIsOnBlock(Monkey monkey, List<Block> blocks) {
+		if (monkey.getY() != Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight()) {
 			return false;
+		}
 		
 		for (Block b : blocks) {
-			if (monkey.getX() + Constants.MONKEY_BLOCK_COLLISION_OFFSET > b.getX() && monkey.getX() < b.getX() + Block.getImage().getWidth() - Constants.MONKEY_BLOCK_COLLISION_OFFSET)
+			if (monkey.getX() + Constants.MONKEY_BLOCK_COLLISION_OFFSET > b.getX() && monkey.getX() < b.getX() + Block.getImage().getWidth() - Constants.MONKEY_BLOCK_COLLISION_OFFSET) {
 				return true;
+			}
 		}
 		
 		return false;
 	}
 	
-	public void applyMonkeyGravity(Monkey monkey) {
-		if (!monkey.isOnBlock()) {
+	public void applyMonkeyGravity(Monkey monkey, List<Block> blocks) {
+		if (!monkeyIsOnBlock(monkey, blocks)) {
 			monkey.setVerticalVelocity(monkey.getVerticalVelocity() + Constants.GRAVITY);
 		} else if (monkey.getVerticalVelocity() > 0) {
 			monkey.setVerticalVelocity(0);
+			monkey.setState(MonkeyState.FirstRun);
 		}
 	}
 	
 	public void updateMonkeyPosition(Monkey monkey) {
 		int newYPosition = monkey.getY() + monkey.getVerticalVelocity();
 		
-		if (monkey.getY() < Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight() && newYPosition > Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight())
+		if (monkey.getY() < Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight() && newYPosition > Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight()) {
 			monkey.setY(Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight());
-		else
+		} else {
 			monkey.setY(newYPosition);
+		}
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		model.getMonkey().setIsOnBlock(isMonkeyOnBlock(model.getMonkey(), model.getBlocks()));
-		applyMonkeyGravity(model.getMonkey());
+		applyMonkeyGravity(model.getMonkey(), model.getBlocks());
 		updateMonkeyPosition(model.getMonkey());
 		moveBlocks(model.getBlocks());
 		view.repaint();
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
-		// Intentionally blank
-	}
-
-	@Override
 	public void keyReleased(KeyEvent e) {
-			this.model.getMonkey().setVerticalVelocity(Constants.JUMP_STRENGTH);
-		
+		switch(model.getMonkey().getState()) {
+			case FirstRun:
+			case SecondRun:
+				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+					model.getMonkey().setVerticalVelocity(Constants.JUMP_STRENGTH);
+					model.getMonkey().setState(MonkeyState.FirstJump);
+				}
+				break;
+			case FirstJump:
+				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+					model.getMonkey().setVerticalVelocity(Constants.JUMP_STRENGTH);
+					model.getMonkey().setState(MonkeyState.SecondJump);
+				}
+				break;
+			case SecondJump:
+			default:
+				break;
+		}	
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// Intentionally blank		
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// Intentionally blank
 	}
 }
