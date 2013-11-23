@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class Monkey {
 	
-	private boolean isOnBlock;
+	private boolean onBlock;
 	private int verticalVelocity;
 	private int x;
 	private int y;
@@ -13,16 +13,18 @@ public class Monkey {
 	private static BufferedImage runningImageTwo;
 	private static BufferedImage jumpingImage;
 	
-	public Monkey() {	
+	public Monkey(int x, int y) {
+		this.x = x;
+		this.y = y;
 		currentImageFrame = runningImageOne;
 	}
 
 	public boolean isOnBlock() {
-		return isOnBlock;
+		return onBlock;
 	}
 
 	public void setIsOnBlock(boolean isOnBlock) {
-		this.isOnBlock = isOnBlock;
+		this.onBlock = isOnBlock;
 	}
 
 	public int getVerticalVelocity() {

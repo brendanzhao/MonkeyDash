@@ -16,7 +16,7 @@ public class MonkeyDashModel {
 	
 	public MonkeyDashModel() {
 		initializeImages();
-		monkey = new Monkey();
+		monkey = new Monkey(Constants.MONKEY_HORIZONTAL_POSITION, 0);
 		setBlocks(new ArrayList<Block>());
 			
 		for (int i = 0; i < Constants.INITIAL_NUMBER_BLOCKS; i++) {

@@ -24,6 +24,8 @@ public class MonkeyDashController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.getMonkey().setIsOnBlock(isMonkeyOnBlock(model.getMonkey(), model.getBlocks()));
+		applyMonkeyGravity(model.getMonkey());
+		updateMonkeyPosition(model.getMonkey());
 		moveBlocks(model.getBlocks());
 		view.repaint();
 		
@@ -44,10 +46,22 @@ public class MonkeyDashController implements ActionListener {
 			return false;
 		
 		for (Block b : blocks) {
-			if (monkey.getX() > b.getX() && monkey.getX() < b.getX() + Block.getImage().getHeight())
+			if (monkey.getX() > b.getX() && monkey.getX() < b.getX() + Block.getImage().getWidth() - monkey.getCurrentImageFrame().getWidth())
 				return true;
 		}
 		
 		return false;
+	}
+	
+	public void applyMonkeyGravity(Monkey monkey) {
+		if (!monkey.isOnBlock()) {
+			monkey.setVerticalVelocity(monkey.getVerticalVelocity() + Constants.GRAVITY);
+		} else if (monkey.getVerticalVelocity() > 0) {
+			monkey.setVerticalVelocity(0);
+		}
+	}
+	
+	public void updateMonkeyPosition(Monkey monkey) {
+		monkey.setY(monkey.getY() + monkey.getVerticalVelocity());
 	}
 }
