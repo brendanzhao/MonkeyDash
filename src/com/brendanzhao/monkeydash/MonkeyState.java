@@ -4,5 +4,6 @@ public enum MonkeyState {
 	FirstRun,
 	SecondRun,
 	FirstJump,
-	SecondJump
+	SecondJump,
+	Falling
 }

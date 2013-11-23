@@ -51,6 +51,10 @@ public class MonkeyDashController implements ActionListener, KeyListener {
 	public void applyMonkeyGravity(Monkey monkey, List<Block> blocks) {
 		if (!monkeyIsOnBlock(monkey, blocks)) {
 			monkey.setVerticalVelocity(monkey.getVerticalVelocity() + Constants.GRAVITY);
+			
+			if (monkey.getState() == MonkeyState.FirstRun) {
+				monkey.setState(MonkeyState.Falling);
+			}
 		} else if (monkey.getVerticalVelocity() > 0) {
 			monkey.setVerticalVelocity(0);
 			monkey.setState(MonkeyState.FirstRun);
@@ -92,6 +96,7 @@ public class MonkeyDashController implements ActionListener, KeyListener {
 				}
 				break;
 			case SecondJump:
+			case Falling:
 			default:
 				break;
 		}	

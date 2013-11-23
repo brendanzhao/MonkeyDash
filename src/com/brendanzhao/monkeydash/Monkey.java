@@ -15,7 +15,7 @@ public class Monkey {
 	public Monkey(int x, int y) {
 		this.x = x;
 		this.y = y;
-		state = MonkeyState.FirstRun;
+		state = MonkeyState.Falling;
 	}
 
 	public int getX() {
@@ -65,6 +65,7 @@ public class Monkey {
 	public BufferedImage getCurrentImageFrame() {
 		switch (state) {
 			case FirstRun:
+			case Falling:
 				return runningImageOne;
 			case SecondRun:
 				return runningImageTwo;
