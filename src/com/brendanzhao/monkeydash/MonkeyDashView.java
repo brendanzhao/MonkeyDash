@@ -12,6 +12,7 @@ public class MonkeyDashView extends JPanel {
 		this.model = model;
 		setPreferredSize(new Dimension(Constants.CLIENT_WIDTH, Constants.CLIENT_HEIGHT));
 		setDoubleBuffered(true);
+		setFocusable(true);
 	}
 	
 	@Override

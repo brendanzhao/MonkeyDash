@@ -20,7 +20,7 @@ public class MonkeyDashModel {
 		setBlocks(new ArrayList<Block>());
 			
 		for (int i = 0; i < Constants.INITIAL_NUMBER_BLOCKS; i++) {
-			blocks.add(new Block(i * Block.getImage().getWidth() + i * Constants.SPACE_BETWEEN_BLOCKS, Constants.BLOCK_LEVITATION_HEIGHT));
+			blocks.add(new Block(i * Block.getImage().getWidth() + i * Constants.SPACE_BETWEEN_BLOCKS + Constants.INITIAL_BLOCK_X, Constants.BLOCK_LEVITATION_HEIGHT));
 		}
 	}
 

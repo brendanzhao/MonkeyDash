@@ -2,11 +2,13 @@ package com.brendanzhao.monkeydash;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 import javax.swing.Timer;
 
-public class MonkeyDashController implements ActionListener {
+public class MonkeyDashController implements ActionListener, KeyListener {
 	
 	private MonkeyDashModel model;
 	private MonkeyDashView view;
@@ -15,20 +17,11 @@ public class MonkeyDashController implements ActionListener {
 	public MonkeyDashController(MonkeyDashModel model, MonkeyDashView view) {
 		this.model = model;
 		this.view = view;
+		this.view.addKeyListener(this);
 		
 		timer = new Timer(Constants.TIMER_TICK_MILLISECONDS, this);
 		timer.setInitialDelay(Constants.INITIAL_TIMER_DELAY);
 		timer.start();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		model.getMonkey().setIsOnBlock(isMonkeyOnBlock(model.getMonkey(), model.getBlocks()));
-		applyMonkeyGravity(model.getMonkey());
-		updateMonkeyPosition(model.getMonkey());
-		moveBlocks(model.getBlocks());
-		view.repaint();
-		
 	}
 	
 	public void moveBlocks(List<Block> blocks) {
@@ -46,7 +39,7 @@ public class MonkeyDashController implements ActionListener {
 			return false;
 		
 		for (Block b : blocks) {
-			if (monkey.getX() > b.getX() && monkey.getX() < b.getX() + Block.getImage().getWidth() - monkey.getCurrentImageFrame().getWidth())
+			if (monkey.getX() + Constants.MONKEY_BLOCK_COLLISION_OFFSET > b.getX() && monkey.getX() < b.getX() + Block.getImage().getWidth() - Constants.MONKEY_BLOCK_COLLISION_OFFSET)
 				return true;
 		}
 		
@@ -62,6 +55,36 @@ public class MonkeyDashController implements ActionListener {
 	}
 	
 	public void updateMonkeyPosition(Monkey monkey) {
-		monkey.setY(monkey.getY() + monkey.getVerticalVelocity());
+		int newYPosition = monkey.getY() + monkey.getVerticalVelocity();
+		
+		if (monkey.getY() < Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight() && newYPosition > Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight())
+			monkey.setY(Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight());
+		else
+			monkey.setY(newYPosition);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		model.getMonkey().setIsOnBlock(isMonkeyOnBlock(model.getMonkey(), model.getBlocks()));
+		applyMonkeyGravity(model.getMonkey());
+		updateMonkeyPosition(model.getMonkey());
+		moveBlocks(model.getBlocks());
+		view.repaint();
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// Intentionally blank
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+			this.model.getMonkey().setVerticalVelocity(Constants.JUMP_STRENGTH);
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// Intentionally blank		
 	}
 }
