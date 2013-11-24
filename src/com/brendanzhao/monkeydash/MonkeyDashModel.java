@@ -16,12 +16,7 @@ public class MonkeyDashModel {
 	
 	public MonkeyDashModel() {
 		initializeImages();
-		monkey = new Monkey(Constants.MONKEY_HORIZONTAL_POSITION, 0);
-		blocks = new ArrayList<Block>();
-			
-		for (int i = 0; i < Constants.INITIAL_NUMBER_BLOCKS; i++) {
-			blocks.add(new Block(i * Block.getImage().getWidth() + i * Constants.SPACE_BETWEEN_BLOCKS + Constants.INITIAL_BLOCK_X, Constants.BLOCK_LEVITATION_HEIGHT));
-		}
+		reset();
 	}
 
 	public Monkey getMonkey() {
@@ -45,6 +40,15 @@ public class MonkeyDashModel {
 			Block.setImage(ImageIO.read(new File(Constants.BLOCK_IMAGE_URL)));
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void reset() {
+		monkey = new Monkey(Constants.MONKEY_HORIZONTAL_POSITION, 0);
+		blocks = new ArrayList<Block>();
+			
+		for (int i = 0; i < Constants.INITIAL_NUMBER_BLOCKS; i++) {
+			blocks.add(new Block(i * Block.getImage().getWidth() + i * Constants.SPACE_BETWEEN_BLOCKS + Constants.INITIAL_BLOCK_X, Constants.BLOCK_LEVITATION_HEIGHT));
 		}
 	}
 }

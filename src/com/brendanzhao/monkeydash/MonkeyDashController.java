@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.ClientInfoStatus;
 import java.util.List;
 
 import javax.swing.Timer;
@@ -91,6 +92,10 @@ public class MonkeyDashController {
 			default:
 				break;
 		}
+		
+		if (!timer.isRunning()) {
+			resetGame();
+		}
 	}
 	
 	public int animateMonkeyRun(Monkey monkey, int currentTickInSecond) {
@@ -107,6 +112,18 @@ public class MonkeyDashController {
 		return ++currentTickInSecond;
 	}
 	
+	public void gameOverCheck(Monkey monkey) {
+		if (monkey.getY() > Constants.CLIENT_HEIGHT) {
+			timer.stop();
+		}
+	}
+	
+	public void resetGame() {
+		model.reset();
+		view.repaint();
+		timer.restart();
+	}
+	
 	class GameTimerListener implements ActionListener {
 		private int animationTickTracker;
 		
@@ -116,6 +133,7 @@ public class MonkeyDashController {
 			applyMonkeyGravity(model.getMonkey(), model.getBlocks());
 			updateMonkeyPosition(model.getMonkey());
 			moveBlocks(model.getBlocks());
+			gameOverCheck(model.getMonkey());
 			view.repaint();
 		}
 	}
