@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.swing.Timer;
 
-public class MonkeyDashController implements KeyListener {
+public class MonkeyDashController {
 	
 	private MonkeyDashModel model;
 	private MonkeyDashView view;
@@ -17,7 +17,7 @@ public class MonkeyDashController implements KeyListener {
 	public MonkeyDashController(MonkeyDashModel model, MonkeyDashView view) {
 		this.model = model;
 		this.view = view;
-		this.view.addKeyListener(this);
+		this.view.addKeyListener(new GameKeyListener());
 		
 		timer = new Timer(Constants.TIMER_TICK_MILLISECONDS, new GameTimerListener());
 		timer.setInitialDelay(Constants.INITIAL_TIMER_DELAY);
@@ -119,19 +119,24 @@ public class MonkeyDashController implements KeyListener {
 			view.repaint();
 		}
 	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		processKeyInput(model.getMonkey(), e.getKeyCode());
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// Intentionally blank		
-	}
 	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// Intentionally blank
+	class GameKeyListener implements KeyListener {
+		
+		@Override
+		public void keyReleased(KeyEvent e) {
+			processKeyInput(model.getMonkey(), e.getKeyCode());			
+		}
+		
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// Intentionally blank
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// Intentionally blank
+			
+		}	
 	}
 }
