@@ -18,6 +18,7 @@ public final class Constants {
 	public static final int INITIAL_BLOCK_X = -200;
 	public static final int TIMER_TICK_MILLISECONDS = 40;
 	public static final int INITIAL_TIMER_DELAY = 1000;
+	public static final int TIMER_TICKS_RUN_ANIMATION = 2;
 	
 	public static final String GAME_NAME = "Monkey Dash";
 	public static final String BACKGROUND_IMAGE_URL = "img/background.png";

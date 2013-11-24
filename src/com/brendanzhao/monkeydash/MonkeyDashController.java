@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.swing.Timer;
 
-public class MonkeyDashController implements ActionListener, KeyListener {
+public class MonkeyDashController implements KeyListener {
 	
 	private MonkeyDashModel model;
 	private MonkeyDashView view;
@@ -19,7 +19,7 @@ public class MonkeyDashController implements ActionListener, KeyListener {
 		this.view = view;
 		this.view.addKeyListener(this);
 		
-		timer = new Timer(Constants.TIMER_TICK_MILLISECONDS, this);
+		timer = new Timer(Constants.TIMER_TICK_MILLISECONDS, new GameTimerListener());
 		timer.setInitialDelay(Constants.INITIAL_TIMER_DELAY);
 		timer.start();
 	}
@@ -71,26 +71,17 @@ public class MonkeyDashController implements ActionListener, KeyListener {
 		}
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		applyMonkeyGravity(model.getMonkey(), model.getBlocks());
-		updateMonkeyPosition(model.getMonkey());
-		moveBlocks(model.getBlocks());
-		view.repaint();
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		switch(model.getMonkey().getState()) {
+	public void processKeyInput(Monkey monkey, int keyCode) {
+		switch(monkey.getState()) {
 			case FirstRun:
 			case SecondRun:
-				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+				if (keyCode == KeyEvent.VK_SPACE) {
 					model.getMonkey().setVerticalVelocity(Constants.JUMP_STRENGTH);
 					model.getMonkey().setState(MonkeyState.FirstJump);
 				}
 				break;
 			case FirstJump:
-				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+				if (keyCode == KeyEvent.VK_SPACE) {
 					model.getMonkey().setVerticalVelocity(Constants.JUMP_STRENGTH);
 					model.getMonkey().setState(MonkeyState.SecondJump);
 				}
@@ -99,7 +90,39 @@ public class MonkeyDashController implements ActionListener, KeyListener {
 			case Falling:
 			default:
 				break;
-		}	
+		}
+	}
+	
+	public int animateMonkeyRun(Monkey monkey, int currentTickInSecond) {
+		if (currentTickInSecond % Constants.TIMER_TICKS_RUN_ANIMATION == 0) {
+			if (monkey.getState() == MonkeyState.FirstRun) {
+				monkey.setState(MonkeyState.SecondRun);
+			} else if (monkey.getState() == MonkeyState.SecondRun) {
+				monkey.setState(MonkeyState.FirstRun);
+			}
+			
+			return 1;
+		}
+		
+		return ++currentTickInSecond;
+	}
+	
+	class GameTimerListener implements ActionListener {
+		private int animationTickTracker;
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			animationTickTracker = animateMonkeyRun(model.getMonkey(), animationTickTracker);
+			applyMonkeyGravity(model.getMonkey(), model.getBlocks());
+			updateMonkeyPosition(model.getMonkey());
+			moveBlocks(model.getBlocks());
+			view.repaint();
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		processKeyInput(model.getMonkey(), e.getKeyCode());
 	}
 
 	@Override
