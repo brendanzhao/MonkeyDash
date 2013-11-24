@@ -3,9 +3,9 @@ package com.brendanzhao.monkeydash;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class MonkeyDashView extends JPanel {
 
 	private MonkeyDashModel model;
@@ -29,6 +29,5 @@ public class MonkeyDashView extends JPanel {
 		}
 		
 		g.drawImage(model.getMonkey().getCurrentImageFrame(), model.getMonkey().getX(), model.getMonkey().getY(), null);
-
 	}
 }

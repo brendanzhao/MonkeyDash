@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
-
 import javax.swing.Timer;
 
 public class MonkeyDashController {
@@ -147,14 +146,12 @@ public class MonkeyDashController {
 		
 		@Override
 		public void keyPressed(KeyEvent e) {
-			// Intentionally blank
-			
+			// Intentionally blank	
 		}
 
 		@Override
 		public void keyTyped(KeyEvent e) {
-			// Intentionally blank
-			
+			// Intentionally blank			
 		}	
 	}
 }

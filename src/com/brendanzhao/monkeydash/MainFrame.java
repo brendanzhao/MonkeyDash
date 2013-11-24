@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+@SuppressWarnings("serial")
 public class MainFrame extends JFrame {
 	
 	MonkeyDashModel model;
