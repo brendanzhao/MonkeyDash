@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.sql.ClientInfoStatus;
 import java.util.List;
 
 import javax.swing.Timer;
@@ -134,6 +133,7 @@ public class MonkeyDashController {
 			updateMonkeyPosition(model.getMonkey());
 			moveBlocks(model.getBlocks());
 			gameOverCheck(model.getMonkey());
+			model.setScore(model.getScore() + Constants.SCORE_INCREMENT);
 			view.repaint();
 		}
 	}

@@ -14,6 +14,10 @@ public final class Constants {
 	public static final int MONKEY_BLOCK_COLLISION_OFFSET = 40;
 	public static final int MONKEY_HORIZONTAL_POSITION = 300;
 	public static final int SPACE_BETWEEN_BLOCKS = 250;
+	public static final int SCORE_BOX_X = 24;
+	public static final int SCORE_BOX_Y= 40;
+	public static final int SCORE_FONT_SIZE = 24;
+	public static final int SCORE_INCREMENT = 7;
 	public static final int INITIAL_NUMBER_BLOCKS = 3;
 	public static final int INITIAL_BLOCK_X = -200;
 	public static final int TIMER_TICK_MILLISECONDS = 40;
@@ -21,6 +25,7 @@ public final class Constants {
 	public static final int TIMER_TICKS_RUN_ANIMATION = 2;
 	
 	public static final String GAME_NAME = "Monkey Dash";
+	public static final String SCORE_TEXT = "Score: ";
 	public static final String BACKGROUND_IMAGE_URL = "img/background.png";
 	public static final String MONKEY_RUN_ONE_IMAGE_URL = "img/monkey_run1.png";
 	public static final String MONKEY_RUN_TWO_IMAGE_URL = "img/monkey_run2.png";

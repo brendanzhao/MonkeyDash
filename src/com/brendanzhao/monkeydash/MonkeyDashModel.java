@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 
 public class MonkeyDashModel {
 
+	private int score;
 	private Monkey monkey;
 	private List<Block> blocks;
 	private BufferedImage backgroundImage;
@@ -17,6 +18,14 @@ public class MonkeyDashModel {
 	public MonkeyDashModel() {
 		initializeImages();
 		reset();
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 	public Monkey getMonkey() {
@@ -44,6 +53,7 @@ public class MonkeyDashModel {
 	}
 	
 	public void reset() {
+		score = 0;
 		monkey = new Monkey(Constants.MONKEY_HORIZONTAL_POSITION, 0);
 		blocks = new ArrayList<Block>();
 			
