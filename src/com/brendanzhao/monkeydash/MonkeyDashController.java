@@ -131,8 +131,8 @@ public class MonkeyDashController {
 			applyMonkeyGravity(model.getMonkey(), model.getBlocks());
 			updateMonkeyPosition(model.getMonkey());
 			moveBlocks(model.getBlocks());
-			gameOverCheck(model.getMonkey());
 			model.setScore(model.getScore() + Constants.SCORE_INCREMENT);
+			gameOverCheck(model.getMonkey());
 			view.repaint();
 		}
 	}

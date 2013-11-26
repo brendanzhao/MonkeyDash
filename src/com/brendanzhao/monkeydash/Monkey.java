@@ -1,5 +1,6 @@
 package com.brendanzhao.monkeydash;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 public class Monkey {
@@ -7,6 +8,7 @@ public class Monkey {
 	private int x;
 	private int y;
 	private int verticalVelocity;
+	private Rectangle hitBox;
 	private MonkeyState state;
 	private static BufferedImage runningImageOne;
 	private static BufferedImage runningImageTwo;
@@ -16,6 +18,7 @@ public class Monkey {
 		this.x = x;
 		this.y = y;
 		state = MonkeyState.Falling;
+		hitBox = new Rectangle(x, y, runningImageOne.getWidth(), runningImageOne.getHeight());
 	}
 
 	public int getX() {
@@ -40,6 +43,10 @@ public class Monkey {
 
 	public void setVerticalVelocity(int verticalVelocity) {
 		this.verticalVelocity = verticalVelocity;
+	}
+
+	public Rectangle getHitBox() {
+		return hitBox;
 	}
 
 	public MonkeyState getState() {
