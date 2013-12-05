@@ -12,11 +12,11 @@ public class Banana extends AbstractConsumable {
 		this.y = y;
 		this.hitBox = new Rectangle(x, y, image.getWidth(), image.getHeight());
 	}
-	
-	public static BufferedImage getImage() {
+
+	public BufferedImage getImage() {
 		return image;
 	}
-
+	
 	public static void setImage(BufferedImage image) {
 		Banana.image = image;
 	}

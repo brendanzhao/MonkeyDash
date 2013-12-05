@@ -110,6 +110,16 @@ public class MonkeyDashController {
 		return ++currentTickInSecond;
 	}
 	
+	public void moveConsumables(List<AbstractConsumable> consumables) {
+		for (AbstractConsumable ac : consumables) {
+			if (ac.getX() <= ac.getImage().getWidth() * -1) {
+				ac.setX(Constants.SPACE_BETWEEN_CONSUMABLES * 3 + ac.getImage().getWidth() * 2);
+			}
+			
+			ac.setX(ac.getX() - Constants.PIXEL_SPEED_PER_TICK);
+		}
+	}
+	
 	public void gameOverCheck(Monkey monkey) {
 		if (monkey.getY() > Constants.CLIENT_HEIGHT) {
 			timer.stop();
@@ -131,6 +141,7 @@ public class MonkeyDashController {
 			applyMonkeyGravity(model.getMonkey(), model.getBlocks());
 			updateMonkeyPosition(model.getMonkey());
 			moveBlocks(model.getBlocks());
+			moveConsumables(model.getConsumables());
 			model.setScore(model.getScore() + Constants.SCORE_INCREMENT);
 			gameOverCheck(model.getMonkey());
 			view.repaint();

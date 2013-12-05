@@ -10,14 +10,17 @@ public final class Constants {
 	public static final int GRAVITY = 2;
 	public static final int JUMP_STRENGTH = -25;
 	public static final int PIXEL_SPEED_PER_TICK = 15;
+	public static final int CONSUMABLE_LEVITATION_HEIGHT = 200;
 	public static final int BLOCK_LEVITATION_HEIGHT = 400;
 	public static final int MONKEY_BLOCK_COLLISION_OFFSET = 40;
 	public static final int MONKEY_HORIZONTAL_POSITION = 300;
 	public static final int SPACE_BETWEEN_BLOCKS = 250;
+	public static final int SPACE_BETWEEN_CONSUMABLES = 750;
 	public static final int SCORE_BOX_X = 24;
 	public static final int SCORE_BOX_Y= 40;
 	public static final int SCORE_FONT_SIZE = 24;
 	public static final int SCORE_INCREMENT = 7;
+	public static final int INITIAL_NUMBER_CONSUMABLES = 3;
 	public static final int INITIAL_NUMBER_BLOCKS = 3;
 	public static final int INITIAL_BLOCK_X = -200;
 	public static final int TIMER_TICK_MILLISECONDS = 40;
@@ -31,4 +34,5 @@ public final class Constants {
 	public static final String MONKEY_RUN_TWO_IMAGE_URL = "img/monkey_run2.png";
 	public static final String MONKEY_JUMP_IMAGE_URL = "img/monkey_jump.png";
 	public static final String BLOCK_IMAGE_URL = "img/block.png";
+	public static final String BANANA_IMAGE_URL = "img/banana.png";
 }

@@ -1,6 +1,7 @@
 package com.brendanzhao.monkeydash;
 
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 public abstract class AbstractConsumable {
 
@@ -29,5 +30,6 @@ public abstract class AbstractConsumable {
 		this.hitBox = hitBox;
 	}
 	
+	public abstract BufferedImage getImage();
 	public abstract int consume();
 }

@@ -12,6 +12,7 @@ public class MonkeyDashModel {
 	private int score;
 	private Monkey monkey;
 	private List<Block> blocks;
+	private List<AbstractConsumable> consumables;
 	private BufferedImage backgroundImage;
 	
 	public MonkeyDashModel() {
@@ -35,6 +36,14 @@ public class MonkeyDashModel {
 		return blocks;
 	}
 
+	public List<AbstractConsumable> getConsumables() {
+		return consumables;
+	}
+
+	public void setConsumables(List<AbstractConsumable> consumables) {
+		this.consumables = consumables;
+	}
+
 	public BufferedImage getBackgroundImage() {
 		return backgroundImage;
 	}
@@ -46,6 +55,7 @@ public class MonkeyDashModel {
 			Monkey.setRunningImageTwo(ImageIO.read(new File(Constants.MONKEY_RUN_TWO_IMAGE_URL)));
 			Monkey.setJumpingImage(ImageIO.read(new File(Constants.MONKEY_JUMP_IMAGE_URL)));
 			Block.setImage(ImageIO.read(new File(Constants.BLOCK_IMAGE_URL)));
+			Banana.setImage(ImageIO.read(new File(Constants.BANANA_IMAGE_URL)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -55,9 +65,14 @@ public class MonkeyDashModel {
 		score = 0;
 		monkey = new Monkey(Constants.MONKEY_HORIZONTAL_POSITION, 0);
 		blocks = new ArrayList<Block>();
+		consumables = new ArrayList<AbstractConsumable>();
 			
 		for (int i = 0; i < Constants.INITIAL_NUMBER_BLOCKS; i++) {
 			blocks.add(new Block(i * Block.getImage().getWidth() + i * Constants.SPACE_BETWEEN_BLOCKS + Constants.INITIAL_BLOCK_X, Constants.BLOCK_LEVITATION_HEIGHT));
+		}
+		
+		for (int i = 0; i < Constants.INITIAL_NUMBER_CONSUMABLES; i++) {
+			consumables.add(new Banana(i * Constants.SPACE_BETWEEN_CONSUMABLES, Constants.CONSUMABLE_LEVITATION_HEIGHT));
 		}
 	}
 }
