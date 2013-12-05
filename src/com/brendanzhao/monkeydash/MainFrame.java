@@ -7,9 +7,9 @@ import javax.swing.WindowConstants;
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame {
 	
-	MonkeyDashModel model;
-	MonkeyDashController controller;
-	MonkeyDashView view;
+	private MonkeyDashModel model;
+	private MonkeyDashController controller;
+	private MonkeyDashView view;
 	
 	public MainFrame() {
 		super(Constants.GAME_NAME);

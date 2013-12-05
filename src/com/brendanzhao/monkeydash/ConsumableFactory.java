@@ -21,8 +21,8 @@ public class ConsumableFactory extends AbstractConsumableFactory {
 	}
 
 	@Override
-	public AbstractConsumable createBanana() {
+	public AbstractConsumable createBanana(int x, int y) {
 		// TODO Auto-generated method stub
-		return null;
+		return new Banana(x, y);
 	}
 }

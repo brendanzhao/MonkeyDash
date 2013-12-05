@@ -25,8 +25,8 @@ public class MonkeyDashController {
 	
 	public void moveBlocks(List<Block> blocks) {
 		for (Block b : blocks) {
-			if (b.getX() <= Block.getImage().getWidth() * -1) {
-				b.setX(Constants.SPACE_BETWEEN_BLOCKS * 3 + Block.getImage().getWidth() * 2);
+			if (b.getX() <= Block.getWidth() * -1) {
+				b.setX(Constants.SPACE_BETWEEN_BLOCKS * 3 + Block.getWidth() * 2);
 			}
 			
 			b.setX(b.getX() - Constants.PIXEL_SPEED_PER_TICK);
@@ -34,12 +34,12 @@ public class MonkeyDashController {
 	}
 	
 	public boolean monkeyIsOnBlock(Monkey monkey, List<Block> blocks) {
-		if (monkey.getY() != Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight()) {
+		if (monkey.getY() != Constants.BLOCK_LEVITATION_HEIGHT - monkey.getHeight()) {
 			return false;
 		}
 		
 		for (Block b : blocks) {
-			if (monkey.getX() + Constants.MONKEY_BLOCK_COLLISION_OFFSET > b.getX() && monkey.getX() < b.getX() + Block.getImage().getWidth() - Constants.MONKEY_BLOCK_COLLISION_OFFSET) {
+			if (monkey.getX() + Constants.MONKEY_BLOCK_COLLISION_OFFSET > b.getX() && monkey.getX() < b.getX() + Block.getWidth() - Constants.MONKEY_BLOCK_COLLISION_OFFSET) {
 				return true;
 			}
 		}
@@ -63,8 +63,8 @@ public class MonkeyDashController {
 	public void updateMonkeyPosition(Monkey monkey) {
 		int newYPosition = monkey.getY() + monkey.getVerticalVelocity();
 		
-		if (monkey.getY() < Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight() && newYPosition > Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight()) {
-			monkey.setY(Constants.BLOCK_LEVITATION_HEIGHT - monkey.getCurrentImageFrame().getHeight());
+		if (monkey.getY() < Constants.BLOCK_LEVITATION_HEIGHT - monkey.getHeight() && newYPosition > Constants.BLOCK_LEVITATION_HEIGHT - monkey.getHeight()) {
+			monkey.setY(Constants.BLOCK_LEVITATION_HEIGHT - monkey.getHeight());
 		} else {
 			monkey.setY(newYPosition);
 		}
@@ -112,8 +112,8 @@ public class MonkeyDashController {
 	
 	public void moveConsumables(List<AbstractConsumable> consumables) {
 		for (AbstractConsumable ac : consumables) {
-			if (ac.getX() <= ac.getImage().getWidth() * -1) {
-				ac.setX(Constants.SPACE_BETWEEN_CONSUMABLES * 3 + ac.getImage().getWidth() * 2);
+			if (ac.getX() <= ac.getWidth() * -1) {
+				ac.setX(Constants.SPACE_BETWEEN_CONSUMABLES * 3 + ac.getWidth() * 2);
 			}
 			
 			ac.setX(ac.getX() - Constants.PIXEL_SPEED_PER_TICK);

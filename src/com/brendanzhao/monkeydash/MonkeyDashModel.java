@@ -72,7 +72,7 @@ public class MonkeyDashModel {
 		}
 		
 		for (int i = 0; i < Constants.INITIAL_NUMBER_CONSUMABLES; i++) {
-			consumables.add(new Banana(i * Constants.SPACE_BETWEEN_CONSUMABLES, Constants.CONSUMABLE_LEVITATION_HEIGHT));
+			consumables.add(ConsumableFactory.getInstance().createBanana(i * Constants.SPACE_BETWEEN_CONSUMABLES, Constants.CONSUMABLE_LEVITATION_HEIGHT));
 		}
 	}
 }

@@ -22,14 +22,22 @@ public abstract class AbstractConsumable {
 		this.y = y;
 	}
 	
+	public int getWidth() {
+		return getImage().getWidth();
+	}
+	
+	public int getHeight() {
+		return getImage().getHeight();
+	}
+	
 	public Rectangle getHitBox() {
 		return hitBox;
 	}
 	
-	public void setHitBox(Rectangle hitBox) {
-		this.hitBox = hitBox;
+	public void updateHitBox() {
+		hitBox = new Rectangle(x, y, getWidth(), getHeight());
 	}
-	
+		
 	public abstract BufferedImage getImage();
 	public abstract int consume();
 }

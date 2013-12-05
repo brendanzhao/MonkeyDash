@@ -10,7 +10,6 @@ public class Banana extends AbstractConsumable {
 	public Banana(int x, int y) {
 		this.x = x;
 		this.y = y;
-		this.hitBox = new Rectangle(x, y, image.getWidth(), image.getHeight());
 	}
 
 	public BufferedImage getImage() {
@@ -23,6 +22,6 @@ public class Banana extends AbstractConsumable {
 
 	@Override
 	public int consume() {
-		return 0;
+		return Constants.BANANA_POINTS;
 	}
 }

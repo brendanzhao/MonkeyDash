@@ -18,7 +18,6 @@ public class Monkey {
 		this.x = x;
 		this.y = y;
 		state = MonkeyState.Falling;
-		hitBox = new Rectangle(x, y, runningImageOne.getWidth(), runningImageOne.getHeight());
 	}
 
 	public int getX() {
@@ -37,6 +36,14 @@ public class Monkey {
 		this.y = y;
 	}
 
+	public int getWidth() {
+		return getCurrentImageFrame().getWidth();
+	}
+
+	public int getHeight() {
+		return getCurrentImageFrame().getHeight();
+	}
+
 	public int getVerticalVelocity() {
 		return verticalVelocity;
 	}
@@ -47,6 +54,10 @@ public class Monkey {
 
 	public Rectangle getHitBox() {
 		return hitBox;
+	}
+	
+	public void updateHitBox() {
+		hitBox = new Rectangle(x, y, getWidth(), getHeight());
 	}
 
 	public MonkeyState getState() {
