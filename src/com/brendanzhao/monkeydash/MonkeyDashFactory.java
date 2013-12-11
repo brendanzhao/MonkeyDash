@@ -11,7 +11,9 @@ public class MonkeyDashFactory extends AbstractFactory {
 	private static BufferedImage monkeyRunOneImage;
 	private static BufferedImage monkeyRunTwoImage;
 	private static BufferedImage monkeyJumpImage;
+	private static BufferedImage smallBlockImage;
 	private static BufferedImage mediumBlockImage;
+	private static BufferedImage largeBlockImage;
 	private static BufferedImage bananaImage;
 	private static MonkeyDashFactory instance;
 	
@@ -49,7 +51,20 @@ public class MonkeyDashFactory extends AbstractFactory {
 		
 		return new Monkey(x, y, monkeyRunOneImage, monkeyRunTwoImage, monkeyJumpImage);	
 	}
-
+	
+	@Override
+	public BasicBlock createSmallBlock(int x, int y) {
+		if (smallBlockImage == null) {
+			try {
+				smallBlockImage = ImageIO.read(new File(Constants.BLOCK_SMALL_IMAGE_URL));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return new BasicBlock(x, y, smallBlockImage);
+	}
+	
 	@Override
 	public BasicBlock createMediumBlock(int x, int y) {
 		if (mediumBlockImage == null) {
@@ -61,6 +76,19 @@ public class MonkeyDashFactory extends AbstractFactory {
 		}
 		
 		return new BasicBlock(x, y, mediumBlockImage);
+	}
+
+	@Override
+	public BasicBlock createLargeBlock(int x, int y) {
+		if (largeBlockImage == null) {
+			try {
+				largeBlockImage = ImageIO.read(new File(Constants.BLOCK_LARGE_IMAGE_URL));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return new BasicBlock(x, y, largeBlockImage);
 	}
 	
 	@Override
