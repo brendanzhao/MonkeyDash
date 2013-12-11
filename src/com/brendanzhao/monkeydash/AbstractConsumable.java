@@ -5,9 +5,10 @@ import java.awt.image.BufferedImage;
 
 public abstract class AbstractConsumable {
 
-	protected int x;
-	protected int y;
-	protected Rectangle hitBox;
+	private int x;
+	private int y;
+	private Rectangle hitBox;
+	private BufferedImage image;
 	
 	public int getX() {
 		return x;
@@ -38,6 +39,13 @@ public abstract class AbstractConsumable {
 		hitBox = new Rectangle(x, y, getWidth(), getHeight());
 	}
 		
-	public abstract BufferedImage getImage();
-	public abstract int consume();
+	public BufferedImage getImage() {
+		return image;
+	}
+	
+	public void setImage(BufferedImage image) {
+		this.image = image;
+	}
+	
+	public abstract void consume(MonkeyDashModel model);
 }

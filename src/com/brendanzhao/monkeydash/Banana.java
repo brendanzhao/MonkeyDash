@@ -1,27 +1,18 @@
 package com.brendanzhao.monkeydash;
 
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 public class Banana extends AbstractConsumable {
-
-	private static BufferedImage image;
 	
-	public Banana(int x, int y) {
-		this.x = x;
-		this.y = y;
-	}
-
-	public BufferedImage getImage() {
-		return image;
-	}
-	
-	public static void setImage(BufferedImage image) {
-		Banana.image = image;
+	public Banana(int x, int y, BufferedImage image) {
+		setX(x);
+		setY(y);
+		setImage(image);
+		updateHitBox();
 	}
 
 	@Override
-	public int consume() {
-		return Constants.BANANA_POINTS;
+	public void consume(MonkeyDashModel model) {
+		model.setScore(model.getScore() + Constants.BANANA_POINTS);
 	}
 }

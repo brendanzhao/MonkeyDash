@@ -120,6 +120,21 @@ public class MonkeyDashController {
 		}
 	}
 	
+	public void checkConsumableCollision(MonkeyDashModel model) {
+		Monkey monkey = model.getMonkey();
+		monkey.updateHitBox();
+		
+		for (AbstractConsumable ac : model.getConsumables()) {
+			ac.updateHitBox();
+			
+			if (monkey.getHitBox().intersects(ac.getHitBox())) {
+				ac.consume(model);
+				//ac = ConsumableFactory.getInstance().createBanana(500, 200);		
+			}
+		}
+	}
+
+	
 	public void gameOverCheck(Monkey monkey) {
 		if (monkey.getY() > Constants.CLIENT_HEIGHT) {
 			timer.stop();
@@ -142,6 +157,7 @@ public class MonkeyDashController {
 			updateMonkeyPosition(model.getMonkey());
 			moveBlocks(model.getBlocks());
 			moveConsumables(model.getConsumables());
+			checkConsumableCollision(model);
 			model.setScore(model.getScore() + Constants.SCORE_INCREMENT);
 			gameOverCheck(model.getMonkey());
 			view.repaint();

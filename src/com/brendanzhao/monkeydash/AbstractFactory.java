@@ -1,5 +1,5 @@
 package com.brendanzhao.monkeydash;
 
-public abstract class AbstractConsumableFactory {	
+public abstract class AbstractFactory {	
 	public abstract AbstractConsumable createBanana(int x, int y);
 }

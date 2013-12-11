@@ -55,7 +55,6 @@ public class MonkeyDashModel {
 			Monkey.setRunningImageTwo(ImageIO.read(new File(Constants.MONKEY_RUN_TWO_IMAGE_URL)));
 			Monkey.setJumpingImage(ImageIO.read(new File(Constants.MONKEY_JUMP_IMAGE_URL)));
 			Block.setImage(ImageIO.read(new File(Constants.BLOCK_IMAGE_URL)));
-			Banana.setImage(ImageIO.read(new File(Constants.BANANA_IMAGE_URL)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -72,7 +71,7 @@ public class MonkeyDashModel {
 		}
 		
 		for (int i = 0; i < Constants.INITIAL_NUMBER_CONSUMABLES; i++) {
-			consumables.add(ConsumableFactory.getInstance().createBanana(i * Constants.SPACE_BETWEEN_CONSUMABLES, Constants.CONSUMABLE_LEVITATION_HEIGHT));
+			consumables.add(MonkeyDashFactory.getInstance().createBanana(i * Constants.SPACE_BETWEEN_CONSUMABLES, Constants.CONSUMABLE_LEVITATION_HEIGHT));
 		}
 	}
 }
