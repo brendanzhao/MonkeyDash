@@ -10,13 +10,17 @@ public class Monkey {
 	private int verticalVelocity;
 	private Rectangle hitBox;
 	private MonkeyState state;
-	private static BufferedImage runningImageOne;
-	private static BufferedImage runningImageTwo;
-	private static BufferedImage jumpingImage;
+	private BufferedImage runningImageOne;
+	private BufferedImage runningImageTwo;
+	private BufferedImage jumpingImage;
 	
-	public Monkey(int x, int y) {
+	public Monkey(int x, int y, BufferedImage runningImageOne,
+			BufferedImage runningImageTwo, BufferedImage jumpingImage) {
 		this.x = x;
 		this.y = y;
+		this.runningImageOne = runningImageOne;
+		this.runningImageTwo = runningImageTwo;
+		this.jumpingImage = jumpingImage;
 		state = MonkeyState.Falling;
 	}
 
@@ -66,18 +70,6 @@ public class Monkey {
 
 	public void setState(MonkeyState state) {
 		this.state = state;
-	}
-
-	public static void setRunningImageOne(BufferedImage runningImageOne) {
-		Monkey.runningImageOne = runningImageOne;
-	}
-
-	public static void setRunningImageTwo(BufferedImage runningImageTwo) {
-		Monkey.runningImageTwo = runningImageTwo;
-	}
-
-	public static void setJumpingImage(BufferedImage jumpingImage) {
-		Monkey.jumpingImage = jumpingImage;
 	}
 
 	public BufferedImage getCurrentImageFrame() {

@@ -8,6 +8,9 @@ import javax.imageio.ImageIO;
 
 public class MonkeyDashFactory extends AbstractFactory {
 	
+	private static BufferedImage monkeyRunOneImage;
+	private static BufferedImage monkeyRunTwoImage;
+	private static BufferedImage monkeyJumpImage;
 	private static BufferedImage bananaImage;
 	private static MonkeyDashFactory instance;
 	
@@ -25,6 +28,25 @@ public class MonkeyDashFactory extends AbstractFactory {
 		}
 		
 		return instance;
+	}
+	
+	@Override
+	public Monkey createMonkey(int x, int y) {	
+		try {
+			if (monkeyRunOneImage == null) {
+				monkeyRunOneImage = ImageIO.read(new File(Constants.MONKEY_RUN_ONE_IMAGE_URL));
+			}		
+			if (monkeyRunTwoImage == null ) {
+				monkeyRunTwoImage = ImageIO.read(new File(Constants.MONKEY_RUN_TWO_IMAGE_URL));
+			}
+			if (monkeyJumpImage == null) {
+				monkeyJumpImage = ImageIO.read(new File(Constants.MONKEY_JUMP_IMAGE_URL));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return new Monkey(x, y, monkeyRunOneImage, monkeyRunTwoImage, monkeyJumpImage);	
 	}
 
 	@Override

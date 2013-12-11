@@ -51,9 +51,6 @@ public class MonkeyDashModel {
 	public void initializeImages() {
 		try {
 			backgroundImage = ImageIO.read(new File(Constants.BACKGROUND_IMAGE_URL));
-			Monkey.setRunningImageOne(ImageIO.read(new File(Constants.MONKEY_RUN_ONE_IMAGE_URL)));
-			Monkey.setRunningImageTwo(ImageIO.read(new File(Constants.MONKEY_RUN_TWO_IMAGE_URL)));
-			Monkey.setJumpingImage(ImageIO.read(new File(Constants.MONKEY_JUMP_IMAGE_URL)));
 			Block.setImage(ImageIO.read(new File(Constants.BLOCK_IMAGE_URL)));
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -62,7 +59,7 @@ public class MonkeyDashModel {
 	
 	public void reset() {
 		score = 0;
-		monkey = new Monkey(Constants.MONKEY_HORIZONTAL_POSITION, 0);
+		monkey = MonkeyDashFactory.getInstance().createMonkey(Constants.MONKEY_HORIZONTAL_POSITION, 0);
 		blocks = new ArrayList<Block>();
 		consumables = new ArrayList<AbstractConsumable>();
 			
