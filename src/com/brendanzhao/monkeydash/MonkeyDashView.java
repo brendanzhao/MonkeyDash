@@ -28,8 +28,8 @@ public class MonkeyDashView extends JPanel {
 			g.drawImage(ac.getImage(), ac.getX(), ac.getY(), null);
 		}
 		
-		for (Block b : model.getBlocks()) {
-			g.drawImage(Block.getImage(), b.getX(), b.getY(), null);
+		for (BasicBlock b : model.getBlocks()) {
+			g.drawImage(b.getImage(), b.getX(), b.getY(), null);
 		}
 		
 		g.drawImage(model.getMonkey().getCurrentImageFrame(), model.getMonkey().getX(), model.getMonkey().getY(), null);

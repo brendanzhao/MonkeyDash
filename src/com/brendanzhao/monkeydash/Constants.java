@@ -35,6 +35,6 @@ public final class Constants {
 	public static final String MONKEY_RUN_ONE_IMAGE_URL = "img/monkey_run1.png";
 	public static final String MONKEY_RUN_TWO_IMAGE_URL = "img/monkey_run2.png";
 	public static final String MONKEY_JUMP_IMAGE_URL = "img/monkey_jump.png";
-	public static final String BLOCK_IMAGE_URL = "img/block.png";
+	public static final String BLOCK_MEDIUM_IMAGE_URL = "img/medium_block.png";
 	public static final String BANANA_IMAGE_URL = "img/banana.png";
 }

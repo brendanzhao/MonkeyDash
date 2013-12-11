@@ -5,18 +5,20 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.imageio.ImageIO;
+import javax.swing.text.html.HTMLDocument.HTMLReader.BlockAction;
 
 public class MonkeyDashModel {
 
 	private int score;
 	private Monkey monkey;
-	private List<Block> blocks;
+	private List<BasicBlock> blocks;
 	private List<AbstractConsumable> consumables;
 	private BufferedImage backgroundImage;
 	
 	public MonkeyDashModel() {
-		initializeImages();
+		initializeBackground();
 		reset();
 	}
 
@@ -32,7 +34,7 @@ public class MonkeyDashModel {
 		return monkey;
 	}
 
-	public List<Block> getBlocks() {
+	public List<BasicBlock> getBlocks() {
 		return blocks;
 	}
 
@@ -40,18 +42,13 @@ public class MonkeyDashModel {
 		return consumables;
 	}
 
-	public void setConsumables(List<AbstractConsumable> consumables) {
-		this.consumables = consumables;
-	}
-
 	public BufferedImage getBackgroundImage() {
 		return backgroundImage;
 	}
 	
-	public void initializeImages() {
+	public void initializeBackground() {
 		try {
 			backgroundImage = ImageIO.read(new File(Constants.BACKGROUND_IMAGE_URL));
-			Block.setImage(ImageIO.read(new File(Constants.BLOCK_IMAGE_URL)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -60,11 +57,16 @@ public class MonkeyDashModel {
 	public void reset() {
 		score = 0;
 		monkey = MonkeyDashFactory.getInstance().createMonkey(Constants.MONKEY_HORIZONTAL_POSITION, 0);
-		blocks = new ArrayList<Block>();
+		blocks = new ArrayList<BasicBlock>();
 		consumables = new ArrayList<AbstractConsumable>();
 			
 		for (int i = 0; i < Constants.INITIAL_NUMBER_BLOCKS; i++) {
-			blocks.add(new Block(i * Block.getImage().getWidth() + i * Constants.SPACE_BETWEEN_BLOCKS + Constants.INITIAL_BLOCK_X, Constants.BLOCK_LEVITATION_HEIGHT));
+			if (blocks.size() == 0) {
+				blocks.add(MonkeyDashFactory.getInstance().createMediumBlock(Constants.INITIAL_BLOCK_X, Constants.BLOCK_LEVITATION_HEIGHT));
+			} else {
+				BasicBlock previous = blocks.get(i - 1);
+				blocks.add(MonkeyDashFactory.getInstance().createMediumBlock(previous.getX() + previous.getWidth() + Constants.SPACE_BETWEEN_BLOCKS, Constants.BLOCK_LEVITATION_HEIGHT));
+			}
 		}
 		
 		for (int i = 0; i < Constants.INITIAL_NUMBER_CONSUMABLES; i++) {

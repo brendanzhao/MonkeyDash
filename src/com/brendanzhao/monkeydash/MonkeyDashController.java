@@ -23,23 +23,23 @@ public class MonkeyDashController {
 		timer.start();
 	}
 	
-	public void moveBlocks(List<Block> blocks) {
-		for (Block b : blocks) {
-			if (b.getX() <= Block.getWidth() * -1) {
-				b.setX(Constants.SPACE_BETWEEN_BLOCKS * 3 + Block.getWidth() * 2);
+	public void moveBlocks(List<BasicBlock> blocks) {
+		for (BasicBlock b : blocks) {
+			if (b.getX() <= b.getWidth() * -1) {
+				b.setX(Constants.SPACE_BETWEEN_BLOCKS * 3 + b.getWidth() * 2);
 			}
 			
 			b.setX(b.getX() - Constants.PIXEL_SPEED_PER_TICK);
 		}
 	}
 	
-	public boolean monkeyIsOnBlock(Monkey monkey, List<Block> blocks) {
+	public boolean monkeyIsOnBlock(Monkey monkey, List<BasicBlock> blocks) {
 		if (monkey.getY() != Constants.BLOCK_LEVITATION_HEIGHT - monkey.getHeight()) {
 			return false;
 		}
 		
-		for (Block b : blocks) {
-			if (monkey.getX() + Constants.MONKEY_BLOCK_COLLISION_OFFSET > b.getX() && monkey.getX() < b.getX() + Block.getWidth() - Constants.MONKEY_BLOCK_COLLISION_OFFSET) {
+		for (BasicBlock b : blocks) {
+			if (monkey.getX() + Constants.MONKEY_BLOCK_COLLISION_OFFSET > b.getX() && monkey.getX() < b.getX() + b.getWidth() - Constants.MONKEY_BLOCK_COLLISION_OFFSET) {
 				return true;
 			}
 		}
@@ -47,7 +47,7 @@ public class MonkeyDashController {
 		return false;
 	}
 	
-	public void applyMonkeyGravity(Monkey monkey, List<Block> blocks) {
+	public void applyMonkeyGravity(Monkey monkey, List<BasicBlock> blocks) {
 		if (!monkeyIsOnBlock(monkey, blocks)) {
 			monkey.setVerticalVelocity(monkey.getVerticalVelocity() + Constants.GRAVITY);
 			
