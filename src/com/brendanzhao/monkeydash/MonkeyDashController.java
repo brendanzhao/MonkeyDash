@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
+
 import javax.swing.Timer;
 
 public class MonkeyDashController {
@@ -24,12 +25,13 @@ public class MonkeyDashController {
 	}
 	
 	public void moveBlocks(List<BasicBlock> blocks) {
-		for (BasicBlock b : blocks) {
-			if (b.getX() <= b.getWidth() * -1) {
-				b.setX(Constants.SPACE_BETWEEN_BLOCKS * 3 + b.getWidth() * 2);
+		for (int i = 0; i < blocks.size(); i++) {
+			if (blocks.get(i).getX() <= blocks.get(i).getWidth() * -1) {
+				BasicBlock previous = i == 0 ? blocks.get(blocks.size() - 1) : blocks.get(i - 1);
+				blocks.set(i, MonkeyDashFactory.getInstance().createRandomBlock(previous.getX() + previous.getWidth() + Constants.BLOCK_DISTANCE_MIN, Constants.BLOCK_LEVITATION_HEIGHT, Constants.BLOCK_DISTANCE_RANDOM));
 			}
 			
-			b.setX(b.getX() - Constants.PIXEL_SPEED_PER_TICK);
+			blocks.get(i).setX(blocks.get(i).getX() - Constants.PIXEL_SPEED_PER_TICK);
 		}
 	}
 	

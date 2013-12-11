@@ -65,7 +65,7 @@ public class MonkeyDashModel {
 				blocks.add(MonkeyDashFactory.getInstance().createMediumBlock(Constants.INITIAL_BLOCK_X, Constants.BLOCK_LEVITATION_HEIGHT));
 			} else {
 				BasicBlock previous = blocks.get(i - 1);
-				blocks.add(MonkeyDashFactory.getInstance().createMediumBlock(previous.getX() + previous.getWidth() + Constants.SPACE_BETWEEN_BLOCKS, Constants.BLOCK_LEVITATION_HEIGHT));
+				blocks.add(MonkeyDashFactory.getInstance().createMediumBlock(previous.getX() + previous.getWidth() + Constants.BLOCK_DISTANCE_MIN, Constants.BLOCK_LEVITATION_HEIGHT));
 			}
 		}
 		

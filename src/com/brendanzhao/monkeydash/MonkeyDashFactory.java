@@ -3,11 +3,13 @@ package com.brendanzhao.monkeydash;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
 public class MonkeyDashFactory extends AbstractFactory {
 	
+	private static Random random;
 	private static BufferedImage monkeyRunOneImage;
 	private static BufferedImage monkeyRunTwoImage;
 	private static BufferedImage monkeyJumpImage;
@@ -18,6 +20,7 @@ public class MonkeyDashFactory extends AbstractFactory {
 	private static MonkeyDashFactory instance;
 	
 	private MonkeyDashFactory() {
+		random = new Random();
 	}
 	
 	// unneccessary since this isn't multi-threaded
@@ -89,6 +92,26 @@ public class MonkeyDashFactory extends AbstractFactory {
 		}
 		
 		return new BasicBlock(x, y, largeBlockImage);
+	}
+	
+	@Override
+	public BasicBlock createRandomBlock(int x, int y) {
+		return createRandomBlock(x, y, 0);
+	}
+	
+	@Override
+	public BasicBlock createRandomBlock(int x, int y, int horizontalRandom) {
+		switch (random.nextInt(3))
+		{
+			case 0:
+				return createSmallBlock(x + random.nextInt(horizontalRandom), y);
+			case 1:
+				return createMediumBlock(x + random.nextInt(horizontalRandom), y);
+			case 2:
+				return createLargeBlock(x + random.nextInt(horizontalRandom), y);
+			default:
+				return createMediumBlock(x + random.nextInt(horizontalRandom), y);
+		}
 	}
 	
 	@Override

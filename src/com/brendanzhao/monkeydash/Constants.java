@@ -15,7 +15,8 @@ public final class Constants {
 	public static final int BLOCK_LEVITATION_HEIGHT = 400;
 	public static final int MONKEY_BLOCK_COLLISION_OFFSET = 40;
 	public static final int MONKEY_HORIZONTAL_POSITION = 300;
-	public static final int SPACE_BETWEEN_BLOCKS = 250;
+	public static final int BLOCK_DISTANCE_MIN = 200;
+	public static final int BLOCK_DISTANCE_RANDOM = 151;
 	public static final int SPACE_BETWEEN_CONSUMABLES = 750;
 	public static final int SCORE_BOX_X = 24;
 	public static final int SCORE_BOX_Y = 40;
