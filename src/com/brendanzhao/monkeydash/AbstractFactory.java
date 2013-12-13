@@ -11,4 +11,6 @@ public abstract class AbstractFactory {
 	public abstract AbstractConsumable createBananaBunch(int x, int y);
 	public abstract AbstractConsumable createCanteen(int x, int y);
 	public abstract AbstractConsumable createPineapple(int x, int y);
+	public abstract AbstractConsumable createRandomConsumable(int x, int y);
+	public abstract AbstractConsumable createRandomConsumable(int x, int y, int horizontalShift);
 }

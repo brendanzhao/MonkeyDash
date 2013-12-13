@@ -168,4 +168,26 @@ public class MonkeyDashFactory extends AbstractFactory {
 		
 		return new Pineapple(x, y, pineappleImage);
 	}
+	
+	@Override
+	public AbstractConsumable createRandomConsumable(int x, int y) {
+		return createRandomConsumable(x, y, 0);
+	}
+	
+	@Override
+	public AbstractConsumable createRandomConsumable(int x, int y, int horizontalRandom) {
+		switch (random.nextInt(4))
+		{
+			case 0:
+				return createBanana(x + random.nextInt(horizontalRandom), y);
+			case 1:
+				return createBananaBunch(x + random.nextInt(horizontalRandom), y);
+			case 2:
+				return createCanteen(x + random.nextInt(horizontalRandom), y);
+			case 3:
+				return createPineapple(x + random.nextInt(horizontalRandom), y);
+			default:
+				return createBanana(x + random.nextInt(horizontalRandom), y);
+		}
+	}
 }
