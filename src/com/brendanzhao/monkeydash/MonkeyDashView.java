@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-@SuppressWarnings("serial")
 public class MonkeyDashView extends JPanel {
 
 	private MonkeyDashModel model;

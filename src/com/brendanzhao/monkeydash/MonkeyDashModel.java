@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
-import javax.swing.text.html.HTMLDocument.HTMLReader.BlockAction;
 
 public class MonkeyDashModel {
 
@@ -62,10 +61,10 @@ public class MonkeyDashModel {
 			
 		for (int i = 0; i < Constants.INITIAL_NUMBER_BLOCKS; i++) {
 			if (blocks.size() == 0) {
-				blocks.add(MonkeyDashFactory.getInstance().createMediumBlock(Constants.INITIAL_BLOCK_X, Constants.BLOCK_LEVITATION_HEIGHT));
+				blocks.add(MonkeyDashFactory.getInstance().createLargeBlock(Constants.INITIAL_BLOCK_X, Constants.BLOCK_LEVITATION_HEIGHT));
 			} else {
 				BasicBlock previous = blocks.get(i - 1);
-				blocks.add(MonkeyDashFactory.getInstance().createMediumBlock(previous.getX() + previous.getWidth() + Constants.BLOCK_DISTANCE_MIN, Constants.BLOCK_LEVITATION_HEIGHT));
+				blocks.add(MonkeyDashFactory.getInstance().createRandomBlock(previous.getX() + previous.getWidth() + Constants.BLOCK_DISTANCE_MIN, Constants.BLOCK_LEVITATION_HEIGHT, Constants.BLOCK_DISTANCE_RANDOM));
 			}
 		}
 		

@@ -9,7 +9,7 @@ public final class Constants {
 	public static final int CLIENT_HEIGHT = 600;
 	public static final int FONT_SIZE = 24;
 	public static final int GRAVITY = 2;
-	public static final int JUMP_STRENGTH = -25;
+	public static final int JUMP_STRENGTH = -28;
 	public static final int PIXEL_SPEED_PER_TICK = 15;
 	public static final int CONSUMABLE_LEVITATION_HEIGHT = 200;
 	public static final int BLOCK_LEVITATION_HEIGHT = 400;
@@ -24,8 +24,8 @@ public final class Constants {
 	public static final int SCORE_INCREMENT = 7;
 	public static final int INITIAL_NUMBER_CONSUMABLES = 3;
 	public static final int INITIAL_NUMBER_BLOCKS = 3;
-	public static final int INITIAL_BLOCK_X = -200;
-	public static final int TIMER_TICK_MILLISECONDS = 40;
+	public static final int INITIAL_BLOCK_X = 500;
+	public static final int TIMER_TICK_MILLISECONDS = 30;
 	public static final int INITIAL_TIMER_DELAY = 1000;
 	public static final int TIMER_TICKS_RUN_ANIMATION = 2;
 	public static final int BANANA_POINTS = 300;
