@@ -52,5 +52,5 @@ public abstract class AbstractConsumable {
 		return image;
 	}
 	
-	public abstract void consume(MonkeyDashModel model);
+	public abstract int consume();
 }

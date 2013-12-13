@@ -9,7 +9,7 @@ public class BananaBunch extends AbstractConsumable {
 	}
 
 	@Override
-	public void consume(MonkeyDashModel model) {
-		model.setScore(model.getScore() + Constants.BANANA_BUNCH_POINTS);
+	public int consume() {
+		return Constants.BANANA_BUNCH_POINTS;
 	}
 }

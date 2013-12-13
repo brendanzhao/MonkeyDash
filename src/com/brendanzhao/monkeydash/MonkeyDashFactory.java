@@ -99,7 +99,7 @@ public class MonkeyDashFactory extends AbstractFactory {
 	
 	@Override
 	public BasicBlock createRandomBlock(int x, int y) {
-		return createRandomBlock(x, y, 0);
+		return createRandomBlock(x, y, 1);
 	}
 	
 	@Override
@@ -140,7 +140,7 @@ public class MonkeyDashFactory extends AbstractFactory {
 			}
 		}
 		
-		return new Banana(x, y, bananaImage);
+		return new BananaBunch(x, y, bananaBunchImage);
 	}
 	
 	@Override
@@ -171,11 +171,12 @@ public class MonkeyDashFactory extends AbstractFactory {
 	
 	@Override
 	public AbstractConsumable createRandomConsumable(int x, int y) {
-		return createRandomConsumable(x, y, 0);
+		return createRandomConsumable(x, y, 1);
 	}
 	
 	@Override
 	public AbstractConsumable createRandomConsumable(int x, int y, int horizontalRandom) {
+		
 		switch (random.nextInt(4))
 		{
 			case 0:

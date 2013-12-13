@@ -113,27 +113,35 @@ public class MonkeyDashController {
 	}
 	
 	public void moveConsumables(List<AbstractConsumable> consumables) {
-		for (AbstractConsumable ac : consumables) {
-			if (ac.getX() <= ac.getWidth() * -1) {
-				ac.setX(Constants.SPACE_BETWEEN_CONSUMABLES * 3 + ac.getWidth() * 2);
+		for (int i = 0; i < consumables.size(); i++) {
+			if (consumables.get(i).getX() <= consumables.get(i).getWidth() * -1) {
+				AbstractConsumable previous = i == 0 ? consumables.get(consumables.size() - 1) : consumables.get(i - 1);
+				consumables.set(i, MonkeyDashFactory.getInstance().createRandomConsumable(previous.getX() + previous.getWidth() + Constants.CONSUMABLE_DISTANCE_MIN, Constants.CONSUMABLE_LEVITATION_HEIGHT, Constants.CONSUMABLE_DISTANCE_RANDOM));
 			}
 			
-			ac.setX(ac.getX() - Constants.PIXEL_SPEED_PER_TICK);
+			consumables.get(i).setX(consumables.get(i).getX() - Constants.PIXEL_SPEED_PER_TICK);
 		}
 	}
 	
-	public void checkConsumableCollision(MonkeyDashModel model) {
-		Monkey monkey = model.getMonkey();
+	public int checkConsumableCollision(Monkey monkey, List<AbstractConsumable> consumables) {	
+		int pointsToAdd = 0;
+		
 		monkey.updateHitBox();
 		
-		for (AbstractConsumable ac : model.getConsumables()) {
-			ac.updateHitBox();
+		for (int i = 0; i < consumables.size(); i++) {
+			consumables.get(i).updateHitBox();
 			
-			if (monkey.getHitBox().intersects(ac.getHitBox())) {
-				ac.consume(model);
-				//ac = ConsumableFactory.getInstance().createBanana(500, 200);		
+			if (monkey.getHitBox().intersects(consumables.get(i).getHitBox())) {
+				pointsToAdd += consumables.get(i).consume();
+				
+				AbstractConsumable previous = i == 0 ? consumables.get(consumables.size() - 1) : consumables.get(i - 1);
+				consumables.set(i, MonkeyDashFactory.getInstance().createRandomConsumable(previous.getX() + previous.getWidth() + Constants.CONSUMABLE_DISTANCE_MIN, Constants.CONSUMABLE_LEVITATION_HEIGHT, Constants.CONSUMABLE_DISTANCE_RANDOM));
+
+				return pointsToAdd;
 			}
 		}
+		
+		return pointsToAdd;
 	}
 
 	
@@ -159,8 +167,8 @@ public class MonkeyDashController {
 			updateMonkeyPosition(model.getMonkey());
 			moveBlocks(model.getBlocks());
 			moveConsumables(model.getConsumables());
-			checkConsumableCollision(model);
 			model.setScore(model.getScore() + Constants.SCORE_INCREMENT);
+			model.setScore(model.getScore() + checkConsumableCollision(model.getMonkey(), model.getConsumables()));
 			gameOverCheck(model.getMonkey());
 			view.repaint();
 		}

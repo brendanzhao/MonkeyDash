@@ -9,7 +9,7 @@ public class Pineapple extends AbstractConsumable {
 	}
 
 	@Override
-	public void consume(MonkeyDashModel model) {
-		model.setScore(model.getScore() + Constants.PINEAPPLE_POINTS);
+	public int consume() {
+		return Constants.PINEAPPLE_POINTS;
 	}
 }

@@ -69,7 +69,12 @@ public class MonkeyDashModel {
 		}
 		
 		for (int i = 0; i < Constants.INITIAL_NUMBER_CONSUMABLES; i++) {
-			consumables.add(MonkeyDashFactory.getInstance().createBanana(i * Constants.SPACE_BETWEEN_CONSUMABLES, Constants.CONSUMABLE_LEVITATION_HEIGHT));
+			if (consumables.size() == 0) {
+				consumables.add(MonkeyDashFactory.getInstance().createRandomConsumable(Constants.INITIAL_CONSUMABLE_X, Constants.CONSUMABLE_LEVITATION_HEIGHT));
+			} else {
+				AbstractConsumable previous = consumables.get(i - 1);
+				consumables.add(MonkeyDashFactory.getInstance().createRandomConsumable(previous.getX() + previous.getWidth() + Constants.CONSUMABLE_DISTANCE_MIN, Constants.CONSUMABLE_LEVITATION_HEIGHT, Constants.CONSUMABLE_DISTANCE_RANDOM));
+			}
 		}
 	}
 }

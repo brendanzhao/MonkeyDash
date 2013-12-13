@@ -9,7 +9,7 @@ public class Canteen extends AbstractConsumable {
 	}
 
 	@Override
-	public void consume(MonkeyDashModel model) {
-		model.setScore(model.getScore() + Constants.CANTEEN_POINTS);
+	public int consume() {
+		return Constants.CANTEEN_POINTS;
 	}
 }
