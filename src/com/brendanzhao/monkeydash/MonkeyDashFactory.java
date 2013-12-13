@@ -17,6 +17,9 @@ public class MonkeyDashFactory extends AbstractFactory {
 	private static BufferedImage mediumBlockImage;
 	private static BufferedImage largeBlockImage;
 	private static BufferedImage bananaImage;
+	private static BufferedImage bananaBunchImage;
+	private static BufferedImage canteenImage;
+	private static BufferedImage pineappleImage;
 	private static MonkeyDashFactory instance;
 	
 	private MonkeyDashFactory() {
@@ -125,5 +128,44 @@ public class MonkeyDashFactory extends AbstractFactory {
 		}
 		
 		return new Banana(x, y, bananaImage);
+	}
+	
+	@Override
+	public AbstractConsumable createBananaBunch(int x, int y) {
+		if (bananaBunchImage == null) {
+			try {
+				bananaBunchImage = ImageIO.read(new File(Constants.BANANA_BUNCH_IMAGE_URL));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return new Banana(x, y, bananaImage);
+	}
+	
+	@Override
+	public AbstractConsumable createCanteen(int x, int y) {
+		if (canteenImage == null) {
+			try {
+				canteenImage = ImageIO.read(new File(Constants.CANTEEN_IMAGE_URL));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return new Canteen(x, y, canteenImage);
+	}
+	
+	@Override
+	public AbstractConsumable createPineapple(int x, int y) {
+		if (pineappleImage == null) {
+			try {
+				pineappleImage = ImageIO.read(new File(Constants.PINEAPPLE_IMAGE_URL));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return new Pineapple(x, y, pineappleImage);
 	}
 }

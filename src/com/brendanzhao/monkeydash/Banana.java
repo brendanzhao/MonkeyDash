@@ -5,10 +5,7 @@ import java.awt.image.BufferedImage;
 public class Banana extends AbstractConsumable {
 	
 	public Banana(int x, int y, BufferedImage image) {
-		setX(x);
-		setY(y);
-		setImage(image);
-		updateHitBox();
+		super(x, y, image);
 	}
 
 	@Override

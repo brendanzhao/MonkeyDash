@@ -28,7 +28,10 @@ public final class Constants {
 	public static final int TIMER_TICK_MILLISECONDS = 30;
 	public static final int INITIAL_TIMER_DELAY = 1000;
 	public static final int TIMER_TICKS_RUN_ANIMATION = 2;
-	public static final int BANANA_POINTS = 300;
+	public static final int BANANA_BUNCH_POINTS = 10000;
+	public static final int BANANA_POINTS = 5000;
+	public static final int CANTEEN_POINTS = 2000;
+	public static final int PINEAPPLE_POINTS = 1000;
 	
 	public static final String GAME_NAME = "Monkey Dash";
 	public static final String SCORE_TEXT = "Score: ";
@@ -40,4 +43,7 @@ public final class Constants {
 	public static final String BLOCK_MEDIUM_IMAGE_URL = "img/medium_block.png";
 	public static final String BLOCK_LARGE_IMAGE_URL = "img/large_block.png";
 	public static final String BANANA_IMAGE_URL = "img/banana.png";
+	public static final String BANANA_BUNCH_IMAGE_URL = "img/bananabunch.png";
+	public static final String CANTEEN_IMAGE_URL = "img/canteen.png";
+	public static final String PINEAPPLE_IMAGE_URL = "img/pineapple.png";
 }

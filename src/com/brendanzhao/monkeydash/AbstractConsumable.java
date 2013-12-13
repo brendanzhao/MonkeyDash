@@ -10,6 +10,13 @@ public abstract class AbstractConsumable {
 	private Rectangle hitBox;
 	private BufferedImage image;
 	
+	public AbstractConsumable(int x, int y, BufferedImage image) {
+		this.x = x;
+		this.y = y;
+		this.image = image;
+		updateHitBox();
+	}
+	
 	public int getX() {
 		return x;
 	}
@@ -43,10 +50,6 @@ public abstract class AbstractConsumable {
 		
 	public BufferedImage getImage() {
 		return image;
-	}
-	
-	public void setImage(BufferedImage image) {
-		this.image = image;
 	}
 	
 	public abstract void consume(MonkeyDashModel model);
